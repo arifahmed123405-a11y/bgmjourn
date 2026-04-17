@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trading Journal — Login</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Chart.js and financial plugin (not used on login but included globally) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial@3.3.0/dist/chartjs-chart-financial.min.js"></script>
+  <!-- Supabase JS v2 -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/supabase.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <div class="logo">TJ</div>
+        <div>
+          <div class="title">Trading Journal</div>
+          <div class="muted">Apple style • Responsive • Supabase</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="toggle" onclick="toggleTheme()">🌓 Theme</div>
+      </div>
+    </header>
+
+    <main>
+      <div class="grid">
+        <div class="card col-6">
+          <h3>Sign in</h3>
+          <div class="muted">Use your email to sign in</div>
+          <div style="margin-top:12px">
+            <div class="form-row"><label>Email</label><input id="login-email" type="email" /></div>
+            <div class="form-row"><label>Password</label><input id="login-pass" type="password" /></div>
+            <div style="display:flex;gap:8px">
+              <button class="btn" id="btn-login">Sign in</button>
+              <button class="btn ghost" id="btn-guest">Continue as Guest</button>
+            </div>
+            <div id="login-msg" class="muted" style="margin-top:8px"></div>
+          </div>
+        </div>
+
+        <div class="card col-6">
+          <h3>Create account</h3>
+          <div class="muted">Quick sign up</div>
+          <div style="margin-top:12px">
+            <div class="form-row"><label>Email</label><input id="signup-email" type="email" /></div>
+            <div class="form-row"><label>Password</label><input id="signup-pass" type="password" /></div>
+            <div style="display:flex;gap:8px">
+              <button class="btn" id="btn-signup">Create account</button>
+            </div>
+            <div id="signup-msg" class="muted" style="margin-top:8px"></div>
+          </div>
+        </div>
+
+        <div class="card col-12">
+          <div class="muted">Or sign in with magic link</div>
+          <div style="margin-top:8px" class="form-row">
+            <label>Magic email</label><input id="magic-email" type="email" />
+            <button class="btn" id="btn-magic">Send link</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">Built with Supabase • Open the dashboard after signing in</footer>
+  </div>
+
+  <script src="js/lib.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    initTheme();
+  </script>
+</body>
+</html>
