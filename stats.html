@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stats — Trading Journal</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/supabase.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <div class="logo">TJ</div>
+        <div>
+          <div class="title">Stats</div>
+          <div class="muted">Win rate • Expectancy • Profit % • RR distribution</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn ghost" onclick="location.href='dashboard.html'">Dashboard</button>
+        <button class="btn ghost" onclick="location.href='trades.html'">Trades</button>
+        <button class="btn" id="btn-logout">Logout</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="grid">
+        <div class="card col-6">
+          <h4>Win rate</h4>
+          <canvas id="winChart" style="height:220px"></canvas>
+        </div>
+
+        <div class="card col-6">
+          <h4>Expectancy</h4>
+          <div id="expectancy" style="font-size:28px;font-weight:700;margin-top:18px">0.00</div>
+          <div class="muted">Expectancy = (Win% × Avg Win) − (Loss% × Avg Loss)</div>
+        </div>
+
+        <div class="card col-12">
+          <h4>Profit % distribution</h4>
+          <canvas id="distChart" style="height:260px"></canvas>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">All stats computed from your trades</footer>
+  </div>
+
+  <script src="js/lib.js"></script>
+  <script src="js/stats.js"></script>
+  <script>
+    initTheme();
+  </script>
+</body>
+</html>
