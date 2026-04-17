@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trades — Trading Journal</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/supabase.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <div class="logo">TJ</div>
+        <div>
+          <div class="title">Trades</div>
+          <div class="muted">Add, edit, delete trades</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn ghost" onclick="location.href='dashboard.html'">Dashboard</button>
+        <button class="btn ghost" onclick="location.href='stats.html'">Stats</button>
+        <button class="btn" id="btn-logout">Logout</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="grid">
+        <div class="card col-12">
+          <h4>New trade</h4>
+          <div style="margin-top:8px">
+            <div class="form-row"><label>Symbol</label><input id="t-symbol" /></div>
+            <div class="form-row"><label>Direction</label>
+              <select id="t-direction"><option value="long">Long</option><option value="short">Short</option></select>
+            </div>
+            <div class="form-row"><label>Entry price</label><input id="t-entry" type="number" step="0.0001" /></div>
+            <div class="form-row"><label>Exit price</label><input id="t-exit" type="number" step="0.0001" /></div>
+            <div class="form-row"><label>Size</label><input id="t-size" type="number" step="0.01" /></div>
+            <div class="form-row"><label>Notes</label><input id="t-notes" /></div>
+            <div style="display:flex;gap:8px">
+              <button class="btn" id="btn-add">Add trade</button>
+              <button class="btn ghost" id="btn-refresh">Refresh</button>
+            </div>
+            <div id="t-msg" class="muted" style="margin-top:8px"></div>
+          </div>
+        </div>
+
+        <div class="card col-12">
+          <h4>Trades</h4>
+          <table class="table" id="trades-table">
+            <thead><tr><th>Symbol</th><th>Entry</th><th>Exit</th><th>Size</th><th>P/L</th><th>Profit %</th><th>When</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">Tap a row to edit or delete</footer>
+  </div>
+
+  <script src="js/lib.js"></script>
+  <script src="js/trades.js"></script>
+  <script>
+    initTheme();
+  </script>
+</body>
+</html>
