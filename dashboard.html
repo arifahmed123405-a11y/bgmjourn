@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard — Trading Journal</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial@3.3.0/dist/chartjs-chart-financial.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/supabase.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <div class="logo">TJ</div>
+        <div>
+          <div class="title">Dashboard</div>
+          <div class="muted">Equity curve • P/L candles • Quick stats</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn ghost" id="btn-trades" onclick="location.href='trades.html'">Trades</button>
+        <button class="btn ghost" id="btn-stats" onclick="location.href='stats.html'">Stats</button>
+        <button class="btn" id="btn-logout">Logout</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="grid">
+        <div class="card col-8">
+          <h4>Equity curve</h4>
+          <div class="chart-wrap"><canvas id="equityChart"></canvas></div>
+        </div>
+
+        <div class="card col-4">
+          <h4>Quick stats</h4>
+          <div id="quick-stats" style="display:grid;gap:10px;margin-top:8px">
+            <div><strong>Balance</strong><div class="muted" id="stat-balance">$0.00</div></div>
+            <div><strong>Net P/L</strong><div id="stat-netpl" class="muted">$0.00</div></div>
+            <div><strong>Win rate</strong><div id="stat-win" class="muted">0%</div></div>
+            <div><strong>Expectancy</strong><div id="stat-exp" class="muted">0.00</div></div>
+          </div>
+        </div>
+
+        <div class="card col-12">
+          <h4>P/L candles (per trade)</h4>
+          <div class="chart-wrap"><canvas id="plCandles"></canvas></div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">Swipe or resize for mobile layout</footer>
+  </div>
+
+  <script src="js/lib.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script>
+    initTheme();
+  </script>
+</body>
+</html>
